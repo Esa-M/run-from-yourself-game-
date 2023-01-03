@@ -1,0 +1,81 @@
+*{
+    padding: 0px;
+    margin: 0;
+    transition: 0.7s;
+}
+body{
+    
+    background-color: black;
+}
+/* #discreption{
+    background-color:  rgb(54, 53, 53);
+    border-radius: 20px;
+    width: 300px;
+    height: 300px;
+} */
+#container{
+    margin-top: 10px;
+    left: 25%;
+    border-radius: 20px;
+    background-image: url('space.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    width: 600px;
+    height: 600px;
+    display: flex;
+}
+
+#display{
+ background-color: rgb(54, 53, 53);
+ color: white;  
+ padding: 10px;
+ border-radius: 10px;
+ width: 600px;
+ margin-left: 25%; 
+ margin-top: 10px; 
+ font-family: 'Courier New', Courier, monospace;
+}
+#vectors{
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    display: flex;
+    border-radius: 5px;
+}
+#vectors img{
+   width: 100%;
+   height: 100%;
+   
+}
+#counter{
+    color: lightgreen;
+    font-size: 130%;
+}
+#timer{
+    color: lightgreen;
+    font-size: 130%;
+}
+#power{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: absolute;
+    display: flex;
+    display: none;
+}
+#power img {
+    width: 120%;
+    height: 120%;
+}
+.ghost{
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    display: flex;
+    border-radius: 5px;
+}
+.ghostimage{
+   width: 100%;
+   height: 100%;
+}
