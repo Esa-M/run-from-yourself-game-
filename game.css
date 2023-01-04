@@ -36,14 +36,14 @@ body{
  margin-top: 10px; 
  font-family: 'Courier New', Courier, monospace;
 }
-#vectors{
+#player{
     width: 60px;
     height: 60px;
     position: absolute;
     display: flex;
     border-radius: 5px;
 }
-#vectors img{
+#player img{
    width: 100%;
    height: 100%;
    
@@ -68,14 +68,14 @@ body{
     width: 120%;
     height: 120%;
 }
-.ghost{
+.darkplayer{
     width: 60px;
     height: 60px;
     position: absolute;
     display: flex;
     border-radius: 5px;
 }
-.ghostimage{
+.darkplayerimage{
    width: 100%;
    height: 100%;
 }
