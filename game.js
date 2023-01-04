@@ -1,15 +1,15 @@
 const container = document.getElementById('container');
-const vector = document.getElementById('vectors');
+const gameplayer = document.getElementById('player');
 const power = document.getElementById('power');
-const ghost = document.createElement('div')
+const darkplayer = document.createElement('div')
 const image = document.createElement('img')
 const playerimage = document.getElementById('playerimage')
 const counter = document.getElementById('counter')
 const timer  = document.getElementById('timer')
 image.src = "darkman.gif"
-ghost.appendChild(image)
-image.setAttribute('class','ghostimage')
-ghost.setAttribute('class','ghost')
+darkplayer.appendChild(image)
+image.setAttribute('class','darkplayerimage')
+darkplayer.setAttribute('class','darkplayer')
 
 
 let speed = 30
@@ -30,13 +30,8 @@ setInterval(() => {
       }
    if(seconds == 0){
         
-    let restart = prompt(`time up if u want to start the game again type s ${win_lose}`)
-      if(restart){
-         window.location.reload()
-      }
-      if(seconds < 0){
-         return seconds = 60
-      }
+     alert(`time up if u want to start the game again type s ${win_lose}`)
+      window.location.reload()
    }
    if(count <= -1){
       counter.style.color = "red"
@@ -51,46 +46,46 @@ setInterval(() => {
 
 const limits ={
    left : speed,
-   right: (container.clientWidth - vector.clientWidth) - speed,
-   up: (container.clientHeight - vector.clientHeight) - speed,
+   right: (container.clientWidth - gameplayer.clientWidth) - speed,
+   up: (container.clientHeight - gameplayer.clientHeight) - speed,
    down: speed
 }
 
 class Player{
-   constructor(vector){
+   constructor(gameplayer){
     this.x =  this.randomlocation()
     this.y = this.randomlocation()
-    vector.style.bottom = `${this.y}px`;
-    vector.style.left = `${this.x}px`;
+    gameplayer.style.bottom = `${this.y}px`;
+    gameplayer.style.left = `${this.x}px`;
    }
    randomlocation(){
-      return Math.floor(Math.random()*(((container.clientWidth - vector.clientWidth) - speed) + speed))
+      return Math.floor(Math.random()*(((container.clientWidth - gameplayer.clientWidth) - speed) + speed))
     }
    setter(){
-    vector.style.bottom = `${this.y}px`;
-    vector.style.left = `${this.x}px`;
+    gameplayer.style.bottom = `${this.y}px`;
+    gameplayer.style.left = `${this.x}px`;
    }
    up(){
     this.y += speed;
     this.setter()
-    //console.log(this.x,this.y)
+  
    }
    down(){
     this.y -= speed;
     this.setter()
-    //console.log(this.x,this.y)
+   
    }
    left(){
     this.x -= speed;
-    vector.style.transform = "scaleX(-1)"
+    gameplayer.style.transform = "scaleX(-1)"
     this.setter()
-    //console.log(this.x,this.y)
+   
    }
    right(){
     this.x += speed;
-    vector.style.transform = "scaleX(1)"
+    gameplayer.style.transform = "scaleX(1)"
     this.setter()
-   // console.log(this.x,this.y)
+   
    }
    altercheck(){
      if(alter == true && count == 3 ){
@@ -100,8 +95,8 @@ class Player{
      }
     }
    checkcolloidbyplayer(){
-      console.log('function')
-    if((ghosts.tempx - player.x >= 0 && ghosts.tempx - player.x <= speed)&& (ghosts.tempy - player.y >= 0 && ghosts.tempy - player.y <= speed)){
+    
+    if((darkplayers.tempx - player.x >= 0 && darkplayers.tempx - player.x <= speed)&& (darkplayers.tempy - player.y >= 0 && darkplayers.tempy - player.y <= speed)){
       image.src = "darkman.gif"
       playerimage.src =  "animated-man-running.gif"
       alter = false
@@ -110,8 +105,8 @@ class Player{
     }
    }
     warning(){
-      console.log('function called')
-      if((player.x - ghosts.tempx > 0 && player.x - ghosts.tempx < 100) && (player.tempy - ghosts.tempy > 0 && player.y - ghosts.y < 100)){
+     
+      if((player.x - darkplayers.tempx > 0 && player.x - darkplayers.tempx < 100) && (player.tempy - darkplayers.tempy > 0 && player.y - darkplayers.y < 100)){
            vignette_color = "red"
            container.style.boxShadow = `inset 0 0 ${vignette}px ${vignette_color} `
    }}
@@ -125,11 +120,14 @@ class Power{
   container.appendChild(power)
  }
  randomlocation(){
-   return Math.floor(Math.random()*(((container.clientWidth - vector.clientWidth) - 100) + 100))
+   return Math.floor(Math.random()*(((container.clientWidth - gameplayer.clientWidth) - 100) + 100))
  }
  powersetter(){
    this.x = this.randomlocation()
    this.y = this.randomlocation()
+   if(this.x < 100 || this.y < 100){
+     return this.powersetter()
+   }
    power.style.bottom =  `${this.y}px`
    power.style.left = `${this.x}px`
    power.style.display = 'block'
@@ -151,7 +149,7 @@ class Power{
  }
 
 }
-class Ghost{
+class DarkPlayer{
    constructor(){
     this.x
     this.y
@@ -160,13 +158,13 @@ class Ghost{
 
    }
    randomlocation(){
-      return Math.floor(Math.random()*(((container.clientWidth - vector.clientWidth) - vector.clientWidth) + vector.clientWidth))
+      return Math.floor(Math.random()*(((container.clientWidth - gameplayer.clientWidth) - gameplayer.clientWidth) + gameplayer.clientWidth))
     }
-    ghostsetter(){
+    darkplayersetter(){
       this.x = this.randomlocation()
       this.y = this.randomlocation()
-      ghost.style.left = `${this.x}px`
-      ghost.style.bottom = `${this.y}px`
+      darkplayer.style.left = `${this.x}px`
+      darkplayer.style.bottom = `${this.y}px`
 
       this.tempx = this.x
       this.tempy = this.y
@@ -203,11 +201,11 @@ class Ghost{
       this.check()
       this.checkcolloid()
      if(this.tempx < player.x){
-      ghost.style.transform = 'scaleX(1)'
+      darkplayer.style.transform = 'scaleX(1)'
       this.tempx = this.tempx +  speed
      }
      if(this.tempx > player.x){
-      ghost.style.transform = 'scaleX(-1)'
+      darkplayer.style.transform = 'scaleX(-1)'
       this.tempx = this.tempx -  speed
      }
      if(this.tempy < player.y){
@@ -217,8 +215,8 @@ class Ghost{
       this.tempy = this.tempy -  speed
      }
      
-   ghost.style.left = `${this.tempx}px`
-   ghost.style.bottom = `${this.tempy}px`
+   darkplayer.style.left = `${this.tempx}px`
+   darkplayer.style.bottom = `${this.tempy}px`
 
    }
 
@@ -229,11 +227,11 @@ class Ghost{
       this.tempx =this.tempx
       this.tempy = this.tempy
      if(this.tempx < powers.x){
-      ghost.style.transform = 'scaleX(1)'
+      darkplayer.style.transform = 'scaleX(1)'
       this.tempx = this.tempx + speed 
      }
      if(this.tempx > powers.x){
-      ghost.style.transform = 'scaleX(-1)'
+      darkplayer.style.transform = 'scaleX(-1)'
       this.tempx = this.tempx - speed 
      }
      if(this.tempy < powers.y){
@@ -243,8 +241,8 @@ class Ghost{
       this.tempy = this.tempy - speed 
      }
      
-   ghost.style.left = `${this.tempx}px`
-   ghost.style.bottom = `${this.tempy}px`
+   darkplayer.style.left = `${this.tempx}px`
+   darkplayer.style.bottom = `${this.tempy}px`
    }
    
     update(){
@@ -263,17 +261,17 @@ class Ghost{
 
 
 
-let player = new Player(vector);
+let player = new Player(gameplayer);
 let powers = new Power(power);
-let ghosts = new Ghost(ghost)
+let darkplayers = new DarkPlayer(darkplayer)
 
 
 
 setTimeout(() => {
    powers.powersetter()
-   container.appendChild(ghost)
-   ghosts.ghostsetter(ghost)
-   ghosts.update()
+   container.appendChild(darkplayer)
+   darkplayers.darkplayersetter(darkplayer)
+   darkplayers.update()
 }, 1000);
 
 
@@ -299,13 +297,13 @@ const check =()=>{
 const checkForConsumingPower=()=>{
    if(alter == false){
       if((powers.x - player.x <= speed && powers.x - player.x >= 0) && (powers.y - player.y <= speed && powers.y - player.y >= 0)){
-         console.log('power consumed by player')
+        
          powers.consumepower( )
        }
    }else{
 
-      if((powers.x - ghosts.tempx <= speed && powers.x - ghosts.tempx >= 0) && (powers.y - ghosts.tempy <= speed && powers.y - ghosts.tempy >= 0)){
-         console.log('power consumed by ghost')
+      if((powers.x - darkplayers.tempx <= speed && powers.x - darkplayers.tempx >= 0) && (powers.y - darkplayers.tempy <= speed && powers.y - darkplayers.tempy >= 0)){
+        
          powers.consumepower( )
        }
    }
@@ -317,8 +315,7 @@ window.addEventListener('keyup',(e)=>{
     player.altercheck()
     player.warning()
     player.checkcolloidbyplayer()
-    console.log(ghosts)
-    console.log(powers)
+  
    switch(e.key){
     case 'ArrowUp' : player.up(); break;
     case 'ArrowLeft' : player.left();break;
