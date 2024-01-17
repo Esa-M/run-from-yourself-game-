@@ -1,14 +1,21 @@
-# run-from-yourself-game-
-a chase down come's a chase game that, I made with basic front end tools like (html , css  &amp; js).
+# run-from-yourself-game
 
-<h1> quick summary of the game </h1>
-<ul>
- <li> u have been shift to a random place in space </li>
- <li> u can find your alter dark version of yourself who lost his universe and feelings and become dark part of it</li>
- <li>  he want's your role in your universe as his second chance of life so he teleport u to the space </li>
- <li> at the start of the game the darkversion of yourself chase you .... </li>
- <li> a warmhole may appear on the feild with some of period of interval.  u have to acquire the power from the warmholes </li>
- <li> if the darkversion of yourself caught u he becomes u and u becomes the darkversion now u have to chase himdown to become yourself again 
-  in the mean time he start to get powers from the warmhole </li>
- <li> in order to win the game u have to be yourself and have 10 or more powers at the end of the game </li>
- <li> while he caught u he also remove all the power u previously obtained power it mait also retorn in negatve power </li>
+## Overview
+
+Welcome to **run-from-yourself-game**, an interactive chase game created with basic front-end tools such as HTML, CSS, and JavaScript. Immerse yourself in a thrilling space adventure where you must navigate through challenges to reclaim your true identity.
+
+## Game Summary
+
+- **Setting:** You find yourself in a random place in space, and your alter dark version, who has lost connection with his universe and emotions, is chasing you.
+
+- **Objective:** Avoid being caught by your dark version. If caught, you switch roles, becoming the pursuer.
+
+- **Power Acquisition:** Warmholes periodically appear on the field. Collect power from these warmholes to gain an advantage over your dark version.
+
+- **Role Reversal:** If your dark version catches you, you become the pursuer. Retrieve the powers he obtained while chasing you to secure a win.
+
+- **Winning Condition:** To win the game, be yourself again and accumulate 10 or more powers by the end.
+
+- **Challenge:** Your dark version not only pursues you but also gains powers from warmholes, increasing the difficulty.
+
+
